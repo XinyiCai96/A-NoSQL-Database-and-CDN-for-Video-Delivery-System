@@ -1,0 +1,18 @@
+$TTL 2d		; 172800 secs default TTL for zone
+$ORIGIN ee595cdn.com.
+@		IN	SOA	ns1.ee595cdn.com.	yanijin.usc.edu. (
+				2020042419	; serial number
+				12h		; time to refresh
+				15m		; time to retry
+				3w		; time to expire
+				3h		; minimum TTL
+				)
+@		IN	A	54.177.253.119; IPv4 address for proxy in N. Ca
+		IN	NS	ns1	; ns1.ee595cdn.com is a nameserver
+		IN	NS	ns2	; ns2.ee595cdn.com is a nameserver
+ns1		IN	A	18.144.7.204; IPv4 address for ns1.ee595cdn.com (thisself)
+ns2		IN	A	13.52.249.10; IPv4 address for ns2.ee595cdn.com (slave name server)
+www		IN	CNAME	ee595cdn.com.	; www.ee595cdn.com is an alias for ee595cdn.com
+; This is North America view, the same as default
+; No "MX" record, as we don't have any mail server associated with ee595cdn.com
+

@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 Videos:
+  ul
+    each video, i in videos
+      li
+        a(href="/Videos/#{video.video_name}") #{video.video_name}
+        ul
+          li Description: #{video.video_description}
+          li Upload Date: #{video.date}
+          li Uploader's Name: #{video.user_first} #{video.user_last}
+          li Comments:
+          ul
+            each comment, j in video.comments
+              li #{comment.comment_description}
+              ul
+                li By: #{comment.user_first} #{comment.user_last}
+        p.
+          #{br}

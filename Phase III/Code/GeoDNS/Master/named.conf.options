@@ -1,0 +1,32 @@
+// VIEW BASED GEOGRAPHIC DNS SERVER for ee595cdn.com
+// maintained by: me myself alone, Yani Jin
+options {
+	directory "/var/cache/bind";
+
+	// If there is a firewall between you and nameservers you want
+	// to talk to, you may need to fix the firewall to allow multiple
+	// ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+	// If your ISP provided one or more IP addresses for stable 
+	// nameservers, you probably want to use them as forwarders.  
+	// Uncomment the following block, and insert the addresses replacing 
+	// the all-0's placeholder.
+
+	// forwarders {
+	// 	0.0.0.0;
+	// };
+
+	//========================================================================
+	// If BIND logs error messages about the root key being expired,
+	// you will need to update your keys.  See https://www.isc.org/bind-keys
+	//========================================================================
+
+	version "For this Bind, Yani Bind";
+	listen-on port 53 { localhost; 18.144.7.204; }; // master its own IP
+	allow-transfer { 13.52.249.10; }; // slave's IP: allow transfer to slave
+	allow-recursion { localhost; }; // closed DNS.
+
+	dnssec-validation auto;
+	auth-nxdomain no;    # conform to RFC1035
+	listen-on-v6 { any; };
+};
+
